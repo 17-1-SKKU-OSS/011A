@@ -33,5 +33,5 @@ Find and correct the typographical errors in the source code. Using Python libra
 Create a simple tutorial code on the C++ platform.
 
 ### SeoYeon Choi
-Translate the caffe2 tutorial into Korean based on Static Page.
+Translate the caffe2 tutorial into Korean. Management Static Page and Wiki.
 
