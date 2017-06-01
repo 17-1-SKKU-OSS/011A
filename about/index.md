@@ -16,12 +16,11 @@ comments: false
 
 
 ## About Project
-We are now in <a href="https://caffe2.ai/"><b>Caffe2</b></a> project.
+We are now in <a href="https://caffe2.ai/"><b>Caffe2</b></a> project. See a [caffe2](https://github.com/17-1-SKKU-OSS/caffe2) project in our GitHub.
 
 Caffe2 is a new lightweight, modular, and scalable deep learning framework.
 It can be applied to any kind of operation like computer vision, chat bots, IoT, Translation, Speech Recognition, and Medical.
 
-See a [caffe2](https://github.com/17-1-SKKU-OSS/caffe2) project in our GitHub.
 
 
 ## What to Do
