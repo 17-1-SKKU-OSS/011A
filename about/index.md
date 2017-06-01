@@ -6,7 +6,8 @@ date: 2017-05-22
 comments: false
 ---
     
-# <center><a href="https://astonisher.github.io/"><b>011A</b></a><br/>We are a passionate, neat team.</center>
+# <center><a href="https://astonisher.github.io/"><b>011A</b></a><br/></center>
+### <center> We are a passionate, neat team.</center>
 
 
 ## Members
