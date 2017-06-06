@@ -47,5 +47,5 @@ It can be applied to any kind of operation like computer vision, chat bots, IoT,
 
 - **SeoYeon Choi**
 
-   Translate the caffe2 Docs tutorial into Korean. Management Static Page and Wiki
+   Translate the caffe2 Docs tutorial into Korean. Management Static Page and Wiki.
 
