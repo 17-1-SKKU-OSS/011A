@@ -11,9 +11,12 @@ comments: false
 
 
 ## Members
-* DongMin Kim(Computer Science/12)
-* SungPill Kang(Computer Science/13)
-* SeoYeon Choi(Computer Science/15)
+ DongMin Kim(Computer Science/12)
+ 
+ SungPill Kang(Computer Science/13)
+ 
+ SeoYeon Choi(Computer Science/15)
+
 
 
 ## About Project
@@ -24,14 +27,25 @@ It can be applied to any kind of operation like computer vision, chat bots, IoT,
 
 
 
+## Why we choose Caffe2
+- Interested in Artificial Intelligence.
+- For little bit more complete grammatical code. 
+- To provide easy tutorial to users that can lower Caffe2 entry barriers.
+- To provide improved accessibility of Korean users to using Caffe2.
+
+
+
 ## What to Do
 
-### DongMin Kim
-Find and correct the typographical errors in the source code. Using Python libraries to create a program that automatically checks for typographical errors in all text files in Python.
+- **DongMin Kim**
 
-### SungPill Kang
-Create a simple tutorial code on the C++ platform.
+   Find and correct the typographical errors in the source code. Using Python libraries to create a program that automatically checks for typographical errors in all text files in Python.
 
-### SeoYeon Choi
-Translate the caffe2 tutorial into Korean. Management Static Page and Wiki.
+- **SungPill Kang**
+
+   Create a simple tutorial code on the C++ platform.
+
+- **SeoYeon Choi**
+
+   Translate the caffe2 Docs tutorial into Korean. Management Static Page and Wiki
 
