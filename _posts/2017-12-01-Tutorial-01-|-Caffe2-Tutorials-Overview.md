@@ -147,7 +147,7 @@ Caffe2에서 계산의 기본 단위 중 하나는 [연산자(operators)](https:
 
 ## 튜토리얼 설치
 
-튜토리얼을 실행하기 위해서 Python2.7, ipython-notebook(http://jupyter.org/install.html)과 matplotlib(http://matplotlib.org/users/installing.html)가 필요합니다. 
+튜토리얼을 실행하기 위해서 Python2.7, [ipython-notebook](http://jupyter.org/install.html)과 [matplotlib](http://matplotlib.org/users/installing.html)가 필요합니다. 
 다음 과정으로 설치가 가능합니다:
 
 ### Brew 와 pip을 사용한 MacOSx 
