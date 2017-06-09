@@ -18,7 +18,7 @@ Translation of Caffe2 documents in Korean, especially tutorials. The fourth tuto
 
 먼저, caffe2를 import합니다. `core`와 `workspace`는 가장 많이 쓰게 될 2가지가 될 것입니다. caffe2에 의해 만들어진 프로토콜 버퍼를 조종하고 싶다면, `caffe2.proto`에서 `caffe2_pb2`도 함께 import합니다. 
 
-
+```python
     # 기본적인 파이썬 라이브러리도 몇 개 import해줍니다. 
     from matplotlib import pyplot
     import numpy as np
@@ -29,7 +29,7 @@ Translation of Caffe2 documents in Korean, especially tutorials. The fourth tuto
     from caffe2.proto import caffe2_pb2
     # Let's show all plots inline.
     %matplotlib inline
-
+```
 
 caffe2가 GPU를 지원하지 않는다는 경고 메시지를 받을 수도 있습니다. CPU 전용 빌드를 실행시키고 있다는 의미입니다. CPU만으로도 아무 문제없이 실행할 수 있고, 문제를 일으키지 않으니 걱정하지 마세요!
 
@@ -42,64 +42,64 @@ caffe2가 GPU를 지원하지 않는다는 경고 메시지를 받을 수도 있
 
 `Blobs()`는 workspace에 존재하는 모든 blob들을 출력합니다. `HasBlob()` 쿼리는 workspace에 blob이 존재하는지 여부를 알려줍니다. 지금은 아무것도 갖고있지 않습니다. 
 
-
+```python
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
     print("Workspace has blob 'X'? {}".format(workspace.HasBlob("X")))
-
+```
 
 
 `FeedBlob()`을 사용해 blob을 workspace로 보낼 수 있습니다. 
 
-
+```python
     X = np.random.randn(2, 3).astype(np.float32)
     print("Generated X from numpy:\n{}".format(X))
     workspace.FeedBlob("X", X)
-
-
+```
+```python
     Generated X from numpy:
     [[-0.56927377 -1.28052795 -0.95808828]
      [-0.44225693 -0.0620895  -0.50509363]]
-
+```
 
 이제 workspace에 어떤 blob이 있는지 확인 해 봅시다. 
 
-
+```python
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
     print("Workspace has blob 'X'? {}".format(workspace.HasBlob("X")))
     print("Fetched X:\n{}".format(workspace.FetchBlob("X")))
+```
 
-
-
+```python
     Current blobs in the workspace: [u'X']
     Workspace has blob 'X'? True
     Fetched X:
     [[-0.56927377 -1.28052795 -0.95808828]
      [-0.44225693 -0.0620895  -0.50509363]]
-
+```
 
 저 배열들이 동일한 것인지 확인 해 봅시다.
 
-
+```python
     np.testing.assert_array_equal(X, workspace.FetchBlob("X"))
-
+```
 
 
 만약, 존재하지 않는 blob에 접근을 시도한다면 에러가 나타날 것입니다. 
 
-
+```python
     try:
         workspace.FetchBlob("invincible_pink_unicorn")
     except RuntimeError as err:
         print(err)
+```
 
-
-
+```python
     [enforce fail at pybind_state.cc:441] gWorkspace->HasBlob(name).
-
+```
 
 즉시 사용하지 못할 수도 있는 것이 있습니다: 파이썬에서, 각각 다른 이름을 갖고 있는 여러 개의 workspace를 갖고 작업을 전환할 수 있습니다. 다른 workspace에 존재하는 blob들은 서로에게 독립적입니다. `CurrentWorkspace` 명령어를 이용하여 현재 workspace를 조회할 수 있습니다. 이름(gutentag)을 이용해 작업 공간을 전환하고, 만약 존재하지 않는다면 생성해봅시다.
 
-
+```python
     print("Current workspace: {}".format(workspace.CurrentWorkspace()))
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
 
@@ -109,33 +109,33 @@ caffe2가 GPU를 지원하지 않는다는 경고 메시지를 받을 수도 있
     # 현재 workspace를 출력 해봅시다. 아직 workspace에 아무것도 없는 것을 잊지 마세요.
     print("Current workspace: {}".format(workspace.CurrentWorkspace()))
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
+```
 
-
-
+```python
     Current workspace: default
     Current blobs in the workspace: ['X']
     Current workspace: gutentag
     Current blobs in the workspace: []
-
+```
 
 기본 workspace로 다시 돌아가 봅시다.
 
-
+```python
     workspace.SwitchWorkspace("default")
     print("Current workspace: {}".format(workspace.CurrentWorkspace()))
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
+```
 
-
-
+```python
     Current workspace: default
     Current blobs in the workspace: ['X']
-
+```
 
 마지막으로, `ResetWorkspace()`는 현재 workspace의 모든 내용을 삭제합니다. 
 
-
+```python
     workspace.ResetWorkspace()
-
+```
 
 
 
@@ -146,7 +146,7 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
 
 실제 예제를 살펴봅시다.
 
-
+```python
     # 연산자 생성
     op = core.CreateOperator(
         "Relu", # 실행시키고자하는 연산자의 타입
@@ -154,17 +154,17 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
         ["Y"], # 이름을 이용해 output blob을 listing
     )
     # 끝!
-
+```
 
 앞서 언급했듯, 생성된 연산자라는 것은 실질적으로 protobuf 객체입니다. 내용을 살펴봅시다.
 
-
+```python
     print("Type of the created op is: {}".format(type(op)))
     print("Content:\n")
     print(str(op))
+```
 
-
-
+```python
     Type of the created op is: <class 'caffe2.proto.caffe2_pb2.OperatorDef'>
     Content:
     
@@ -172,24 +172,25 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
     output: "Y"
     name: ""
     type: "Relu"
-
+```
 
 됐습니다, 연산자를 실행시켜봅시다. 먼저, input X를 workspace로 가져옵니다. 그리고 나서, 연산자를 실행시키는 가장 쉬운 방법은 `workspace.RunOperatorOnce(operator)` 명령어 입니다. 
 
-
+```python
     workspace.FeedBlob("X", np.random.randn(2, 3).astype(np.float32))
     workspace.RunOperatorOnce(op)
+```
 
 실행 이후에, 연산자가 제대로 일을 수행하는지 살펴봅시다. 여기서는 연산자가 신경망([Relu])을 활성화하는 역할을 하는 함수입니다. 
 
-
+```python
     print("Current blobs in the workspace: {}\n".format(workspace.Blobs()))
     print("X:\n{}\n".format(workspace.FetchBlob("X")))
     print("Y:\n{}\n".format(workspace.FetchBlob("Y")))
     print("Expected:\n{}\n".format(np.maximum(workspace.FetchBlob("X"), 0)))
+```
 
-
-
+```python
     Current blobs in the workspace: ['X', 'Y']
     
     X:
@@ -203,13 +204,13 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
     Expected:
     [[ 1.03125858  1.0038228   0.0066975 ]
      [ 1.33142471  1.80271244  0.        ]]
-
+```
 
 이 예에서 Y와 출력이 일치하는 것을 기대 한 것이라면, 이 연산자는 제대로 작동하고 있는 것입니다. 
 
 연산자는 필요하다면 선택적 인수(arguments) 또한 사용합니다. 연산자와 인수는 키-값 쌍으로 지정됩니다. 텐서를 만들어 Gaussian 확률 변수로 채우는 간단한 예제를 살펴보겠습니다.
 
-
+```python
     op = core.CreateOperator(
         "GaussianFill",
         [], # GaussianFill은 다른 인자(파라미터)를 필요로하지 않습니다.
@@ -220,9 +221,9 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
     )
     print("Content of op:\n")
     print(str(op))
+```
 
-
-
+```python
     Content of op:
     
     output: "Z"
@@ -241,20 +242,20 @@ Caffe2 Python에서 "연산자 만들기"라고 말하면 아무것도 실행되
       name: "mean"
       f: 1.0
     }
-
+```
 
 그것을 실행하고 의도한 대로 값이 나오는지 봅시다.
 
-
+```python
     workspace.RunOperatorOnce(op)
     temp = workspace.FetchBlob("Z")
     pyplot.hist(temp.flatten(), bins=50)
     pyplot.title("Distribution of Z")
+```
 
-
-
+```python
     <matplotlib.text.Text at 0x7f2bd2d51710>
-
+```
 
 종 모양의 곡선이 보여지면 제대로 작동 된 것입니다!
 
@@ -268,36 +269,36 @@ net은 기본적으로 계산 그래프입니다. Net은 일련의 명령으로 
 
 다음의 파이썬 math와 기본적으로 같은 역할을 하는 network를 만들어봅시다. 
 
-
+```python
     X = np.random.randn(2, 3)
     W = np.random.randn(5, 3)
     b = np.ones(5)
     Y = X * W^T + b
-
+```
 
 
 차근차근 과정을 보여드리겠습니다. Caffe2의 `core.Net`은 NetDef 프로토콜 버퍼의 주변을 감싸는 class입니다.
 
 network를 생성하면, 그 기저의 프로토콜 버퍼는 네트워크 이름을 제외하고 기본적으로 비어있습니다. net을 만들고 proto 내용을 보여주게 만들어 봅시다.
 
-
+```python
     net = core.Net("my_first_net")
     print("Current network proto:\n\n{}".format(net.Proto()))
+```
 
-
-
+```python
     Current network proto:
     
     name: "my_first_net"
-
+```
 
 X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이터로 채웁니다. 
 
-
+```python
     X = net.GaussianFill([], ["X"], mean=0.0, std=1.0, shape=[2, 3], run_once=0)
     print("New network proto:\n\n{}".format(net.Proto()))
-
-
+```
+```python
     New network proto:
     
     name: "my_first_net"
@@ -323,15 +324,15 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
         f: 0.0
       }
     }
-
+```
 
 앞선 `core.CreateOperator` 호출과 약간의 차이점을 관찰 할 수 있을 것입니다. 기본적으로, net이 있다면, 연산자를 바로 생성하고 동시에 파이썬 트릭을 사용하여 net에 추가시킬 수 있습니다 : SomeOp가 연산자의 문자열 타입으로 등록된 상태에서 `net.SomeOp`을 호출하면 이것은 곧바로 다음으로 번역시킵니다.
 
 
-
+```python
     op = core.CreateOperator("SomeOp", ...)
     net.Proto().op.append(op)
-
+```
 
 
 
@@ -342,41 +343,43 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
 
 유효성을 검사해봅시다. 또 한 가지 기억해야 할 것은 우리는 아직 아무것도 실행하지 않았다는 것입니다. 따라서 X는 symbol일 뿐 아무것도 갖고 있지 않습니다. 지금 당장 숫자 값을 얻는 것을 기대하지는 마세요 :)
 
-
+```python
     print("Type of X is: {}".format(type(X)))
     print("The blob name is: {}".format(str(X)))
+```
 
-
-
+```python
     Type of X is: <class 'caffe2.python.core.BlobReference'>
     The blob name is: X
-
+```
 
 계속해서 W와 b를 생성합니다.
 
 
-
+```python
     W = net.GaussianFill([], ["W"], mean=0.0, std=1.0, shape=[5, 3], run_once=0)
     b = net.ConstantFill([], ["b"], shape=[5,], value=1.0, run_once=0)
-
+```
 
 이제, 간단한 코드가 하나 생겼습니다. BlobReference 객체는 생성된 net이 무엇인지 알고 있기 때문에, net에서 연산자를 만들 수 있을 뿐만 아니라 BlobReference으로부터 연산자를 만들 수도 있습니다. 이런 식으로 FC연산자를 만들어봅시다.
 
-
+```python
     Y = X.FC([W, b], ["Y"])
-
+```
 
 `X.FC(...)`는 `X`를 해당 연산자의 첫 번째 input으로 삽입 해 `net.FC`의 간단한 대리자 역할을 합니다. 따라서 위에서 한 작업은 다음의 것과 동일합니다. 
 
+```python
     Y = net.FC([X, W, b], ["Y"])
+```
 
 현재 network를 살펴봅시다.
 
-
+```python
     print("Current network proto:\n\n{}".format(net.Proto()))
+```
 
-
-
+```python
     Current network proto:
     
     name: "my_first_net"
@@ -449,16 +452,17 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
       name: ""
       type: "FC"
     }
-
+```
 
 
 너무 장황하죠? 그래프로 시각화 해봅시다. Caffe2는 아주 기본적인 기능을 제공하는 시각화 도구를 제공합니다. ipython으로 그것을 보여 드리겠습니다. 
 
-
+```python
     from caffe2.python import net_drawer
     from IPython import display
     graph = net_drawer.GetPydotGraph(net, rankdir="LR")
     display.Image(graph.create_png(), width=800)
+```
 
 ![](https://caffe2.ai/static/images/tutorial-basics-net-graph.png)
 
@@ -479,8 +483,7 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
    (b) network 이름을 전달해서 `workspace.RunNet()`을 사용합니다.
 
 
-
-    ```
+```python
     workspace.ResetWorkspace()
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
     workspace.RunNetOnce(net)
@@ -488,9 +491,9 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
     # blobs의 내용을 dump합시다.
     for name in workspace.Blobs():
         print("{}:\n{}".format(name, workspace.FetchBlob(name)))
-    ```
+```
 
-    ```
+```python
     Current blobs in the workspace: []
     Blobs in the workspace after execution: ['W', 'X', 'Y', 'b']
     W:
@@ -507,11 +510,11 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
      [ 1.35693741  1.14979863  0.85720366 -0.37135673  0.15705228]]
     b:
     [ 1.  1.  1.  1.  1.]
-    ```
+```
 
 자, 이번에는 두 번째 방법을 이용해 net을 생성하고 실행시켜봅시다. `ResetWorkspace()`를 사용하여 변수를 지우고, 전에 생성 해 둔 workspace의 net 객체인 `CreateNet(net_object)`를 이용해 net을 만듭니다. 이후 `RunNet(net_name)`에 이름을 전달하여 net을 실행합니다.
 
-
+```python
     workspace.ResetWorkspace()
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
     workspace.CreateNet(net)
@@ -519,9 +522,9 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
     print("Blobs in the workspace after execution: {}".format(workspace.Blobs()))
     for name in workspace.Blobs():
         print("{}:\n{}".format(name, workspace.FetchBlob(name)))
+```
 
-
-
+```python
     Current blobs in the workspace: []
     Blobs in the workspace after execution: ['W', 'X', 'Y', 'b']
     W:
@@ -538,11 +541,11 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
      [-0.71776152  2.27745867  1.42452145 -4.59527397  0.4452306 ]]
     b:
     [ 1.  1.  1.  1.  1.]
-
+```
 
 `RunNetOnce`와 `RunNet`은 몇 가지 차이점이 있는데, 아마 주요 차이점은 연산속도일 것입니다. `RunNetOnce`는 protobuf를 직렬화하여 Python과 C 사이를 통과하고 네트워크를 인스턴스화하는 것까지 포함하기 때문에 실행하는 데 시간이 오래 걸릴 수 있습니다. 이 경우를 전반적으로 살펴보겠습니다.
 
-
+```python
     # `%timeit`의 마법이 C++에서 제대로 작동하지 않는 것 같아서 loop를 이용하겠습니다. 
     start = time.time()
     for i in range(1000):
@@ -556,10 +559,11 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
     workspace.RunNet(net.Proto().name)
     end = time.time()
     print('Run time per RunNet: {}'.format((end - start) / 1000))
+```
 
-
-
+```python
     Run time per RunNetOnce: 0.000364284992218
     Run time per RunNet: 4.42600250244e-06
+```
 
 파이썬에서 Caffe2를 사용하고 싶다면 위의 몇 가지 주요 구성 요소를 활용하는 것만으로도 좋을 것입니다. 더 많은 것이 필요하다고 느껴지면, 튜토리얼에 추가 할 계획입니다. 이제부터, 튜토리얼의 나머지 부분을 확인 해보세요!
