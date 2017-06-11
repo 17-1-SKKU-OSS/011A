@@ -6,17 +6,17 @@ Caffe2에 대한 관심에 진심으로 감사드립니다. Caffe2가 머신러�
 
 
 ## 방향을 정하세요!
-1. [미리 준비된 신경망 사용하기!](https://caffe2.ai/docs/tutorials.html#null__new-to-deep-learning) (초급)
+1. [미리 준비된 인공신경망 사용하기!](https://caffe2.ai/docs/tutorials.html#null__new-to-deep-learning) (초급)
 2. [나만의 신경망 만들기!](https://caffe2.ai/docs/tutorials.html#null__intermediate-tutorials) (중급)
-3. [모바일 중심, 을 이용한 앱만들기!](https://caffe2.ai/docs/AI-Camera-demo-android) (고급)
+3. [모바일 중심, 딥러닝을 사용하는 앱만들기!](https://caffe2.ai/docs/AI-Camera-demo-android) (고급)
 
-만약 1번을 선택한 경우, 사전 사전에 학습된 모델을 사용하여 데모 프로젝트를 실행하는 방법을 빠르게 보여줍니다.
+만약 1번을 선택한 경우, 사전에 학습된 모델을 사용하여 데모 프로젝트를 실행하는 방법을 빠르게 보여줍니다.
 
-만약 2번을 선택한 경우, 먼저 신경망에 대한 배경지식이 필요합니다. 이미 알고계시다면 링크를 건너뛰셔도 됩니다. 만약 입문서가 필요하다면 아래에 자료목록이 있습니다. 
+만약 2번을 선택한 경우, 먼저 인공신경망에 대한 배경지식이 필요합니다. 이미 알고 계신다면 링크를 건너뛰셔도 됩니다. 만약 입문서가 필요하다면 아래에 자료목록이 있습니다. 
 
-만약 3번을 선택한 경우, 링크를 클릭하여 Android 또는 iOS 앱에서 이미지를 분류하는 방법을 알아보시는 것을 권해드립니다. Android Studio나 Xcode는 거의 플러그 앤 플레이(Plug-n-play) 방식이지만, 추후 Caffe2의 C++ 후크와 직접 통합해야합니다.
+만약 3번을 선택한 경우, 링크를 클릭하여 Android 또는 iOS 앱에서 이미지를 분류하는 방법을 알아보시는 것을 권해드립니다. Android Studio나 Xcode는 거의 플러그 앤 플레이(Plug-n-play) 방식이지만, 추후 Caffe2의 C++ 후크와 직접 통합 해야합니다.
 
-어떤 선택을 하든, 각 세션에 대해 튜토리얼을 확인하는 것을 잊지 말아주세요. 어떤걸 배울지 배우게 될지 모를겁니다!
+어떤 선택을 하든, 각 세션에 대해 튜토리얼을 확인하는 것을 잊지 말아주세요. 당신이 무얼 배울 지 혹시 모르잖아요!
 
 - [초보자 튜토리얼](https://caffe2.ai/docs/tutorials.html#null__beginner-tutorials)
 - [Caffe2의 달라진 점](https://caffe2.ai/docs/tutorials.html#null__new-to-caffe2)
@@ -26,11 +26,11 @@ Caffe2에 대한 관심에 진심으로 감사드립니다. Caffe2가 머신러�
 
 
 ### 딥러닝이 처음인가요?
-Michael Nielsen의 [신경망과 딥 러닝 (Neural Networks and Deep Learning)](http://neuralnetworksanddeeplearning.com/index.html) 온라인 초안에서 딥러닝에 대한 폭넓은 소개를 제공합니다. 특히 딥러닝을 처음 접한다면 ‘신경망 사용’ 챕터와 ‘역전파(backpropagation)의 작동 법’ 챕터가 도움이 될 것입니다. 
+Michael Nielsen의 [인공신경망과 딥 러닝 (Neural Networks and Deep Learning)](http://neuralnetworksanddeeplearning.com/index.html) 온라인 초안에서 딥러닝에 대한 폭넓은 소개를 제공합니다. 특히 딥러닝을 처음 접한다면 ‘인공신경망 사용’ 챕터와 ‘역전파(backpropagation)의 작동 법’ 챕터가 도움이 될 것입니다. 
 
-회로 및 코드에서의 신경망에 대해 알고 싶다면 Andrej Karpathy(Stanford)의 [해커 신경망 가이드]를 확인하는 것을 추천합니다.
+회로 및 코드에서의 인공신경망에 대해 알고 싶다면 Andrej Karpathy(Stanford)의 [해커의 인공신경망 가이드]를 확인하는 것을 추천합니다.
 
-### 머신러닝의 한 측면에서 숙련된 사람인가요?
+### 머신러닝의 전문연구원
 
 CVPR ‘14의 [Vision을 위한 딥러닝 튜토리얼](https://sites.google.com/site/deeplearningcvpr2014/)은 자습서로써 좋은 동반자가 될 것입니다. Caffe 튜토리얼을 이용해 기본적인 프레임워크 사용법을 익히고 나서 CVPR ‘14의 튜토리얼에서 기본적인 아이디어부터 고급연구 방향을 탐색하는 것을 권장합니다.
 
@@ -46,7 +46,7 @@ CVPR ‘14의 [Vision을 위한 딥러닝 튜토리얼](https://sites.google.com
 ### 예제 스크립트
 [/caffe2/python/examples](https://github.com/caffe2/caffe2/tree/master/caffe2/python/examples)에 있는 예제 스크립트는 Caffe2를 이용해 프로젝트를 시작하기에 아주 훌륭한 자료입니다.
 
-[char_rnn.py](https://github.com/caffe2/caffe2/blob/master/caffe2/python/examples/char_rnn.py): 입력한 텍스트를 샘플링 해서 임의로 유사한 스타일의 텍스트를 생성하는 재귀적인 회선 신경망을 생성합니다. [RNN 및 LSTM 페이지](https://caffe2.ai/docs/RNNs-and-LSTM-networks.html)에 이 스크립트의 사용법에 대한 추가적인 정보가 있습니다.
+[char_rnn.py](https://github.com/caffe2/caffe2/blob/master/caffe2/python/examples/char_rnn.py): 입력한 텍스트를 샘플링 해서 임의로 유사한 스타일의 텍스트를 생성하는 순환 컨볼루션 인공신경망을 생성합니다. [RNN 및 LSTM 페이지](https://caffe2.ai/docs/RNNs-and-LSTM-networks.html)에 이 스크립트의 사용법에 대한 추가적인 정보가 있습니다.
 
 [lmdb_create_example.py](https://github.com/caffe2/caffe2/blob/master/caffe2/python/examples/lmdb_create_example.py): 임의의 이미지 데이터와 레이블을 포함하는 lmdb 데이터베이스를 생성합니다. 이 데이터베이스는 사용자의 데이터를 import하기 위해 뼈대로 사용될 수 있습니다.
 
@@ -56,20 +56,20 @@ CVPR ‘14의 [Vision을 위한 딥러닝 튜토리얼](https://sites.google.com
 
 ### 초보자 튜토리얼
 
-[모델과 데이터베이스 - 초보자](https://caffe2.ai/docs/tutorial-models-and-datasets.html)
+[모델과 데이터 셋(Data set) - 초보자](https://caffe2.ai/docs/tutorial-models-and-datasets.html)
 
 Caffe와 딥러닝을 처음 접하고 계신가요? 여기서 시작해 다양한 모델과 데이터 셋에 대해 자세히 알아보세요!
 
 [사전 학습된 모델 로드하기(load)](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/Loading_Pretrained_Models.ipynb)
 
-Model Zoo의 이점(advantage)을 경험하고, 준비된 모델로 테스트를 해 보세요. 이 튜토리얼에는 약간의 모델들이 바로 적용이 가능하도록 준비되어있으며, 이들이 신경망을 작동시키는 기본적인 단계를 보여줄 것입니다. 그런 다음 이미지를 비롯한 다른 테스트를 던져(throw) 모델이 어떤 방식으로 작동하는 지 볼 수 있습니다.
+Model Zoo의 이점(advantage)을 경험하고, 준비된 모델로 테스트를 해 보세요. 이 튜토리얼에는 약간의 모델들이 바로 적용이 가능하도록 준비되어있으며, 이들이 신경망을 작동시키는 기본적인 단계를 보여줄 것입니다. 그런 다음 이미지를 비롯한 다른 테스트를 입력해 모델이 어떤 방식으로 작동하는 지 볼 수 있습니다.
 
 [이미지 전처리 파이프라인(pipeline)](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/Image_Pre-Processing_Pipeline.ipynb)
 
-사전 학습된 모델로 입력하거나 다른 데이터 셋의 테스트 이미지로써 이미지를 어떻게 얻는지 배우세요.(Learn how to get your images ready for ingestion into pre-trained models or as test images against other datasets.) 휴대 전화에서 웹캠, 새로운 의료 이미지에 이르기까지 이미지 수집 파이프라인을 고려하는 것 뿐 아니라, 어떤 종류의 이미지 분류에서도 속도와 정확성 모두를 위해 필요한 변환도 고려해야합니다.
+사전 학습된 모델에 입력하거나 테스트 하기 위해 이미지를 어떻게 얻는지 배우세요. 휴대 전화에서 웹캠, 새로운 의료 이미지에 이르기까지 이미지 수집 파이프라인을 고려하는 것 뿐 아니라, 어떤 종류의 이미지 분류에서도 속도와 정확성 모두를 위해 필요한 변환도 고려해야합니다.
 
-- 크기 조정
-- 재계약 (rescaling)
+- 이미지 크기 조정
+- 이미지 범위 조정(rescaling)
 - HWC에서 CHW
 - RGB에서 BRG로
 - Caffe2 적용(ingestion)을 위한 이미지 준비
@@ -99,7 +99,7 @@ Caffe2에 대해 소개합니다. 기존의 Caffe모델을 Caffe2모델로 변�
 
 - 연산자 vs helper 함수
 - brew 와 arg_scope
-- helper 함수 custom하기
+- 자신만의 helper함수 만들기 
 
 [Toy Regression - Plotting Lines & Random Data](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/Toy_Regression.ipynb)
 
@@ -108,7 +108,7 @@ Caffe2에 대해 소개합니다. 기존의 Caffe모델을 Caffe2모델로 변�
 - 모델에 대한 입력을 바탕으로 임의의 샘플 데이터를 생성
 - 이 데이터로 네트워크 만들기
 - 모델을 자동으로 학습시키기
-- 확률 적 구배 강하 결과 및 네트워크가 학습 한 지상 진리 파라미터의 변화 검토(review stochastic gradient descent results and changes to your ground truth parameters as the network learned)
+- 확률적 경사 하강 결과와 인공신경망에서 학습된 변수의 변화 검토
 
 
 
@@ -116,9 +116,9 @@ Caffe2에 대해 소개합니다. 기존의 Caffe모델을 Caffe2모델로 변�
 
 [MNIST - 필기 인식](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/MNIST.ipynb)
 
-이 튜토리얼에서는 필기를 식별할 수 있는 작은 회선 신경망(CNN)을 만듭니다. CNN을 학습하고 테스트하는 과정에서 MNIST 데이터 세트의 필기 이미지를 사용합니다. 이것은 CNN 교육에 사용되는 500명의 서로 다른 사람들의 필기체 이미지 60,000 장입니다. 또 다른 10,000개의 테스트 이미지는 교육용 이미지와는 다르며, CNN의 정확성을 테스트하는 데에 사용됩니다.
+이 튜토리얼에서는 필기를 식별할 수 있는 작은 컨볼루션 인공신경망(CNN)을 만듭니다. CNN을 학습하고 테스트하는 과정에서 MNIST 데이터 세트의 필기 이미지를 사용합니다. 이것은 CNN 교육에 사용되는 500명의 서로 다른 사람들의 필기체 이미지 60,000 장입니다. 또 다른 10,000개의 테스트 이미지는 교육용 이미지와는 다르며, CNN의 정확성을 테스트하는 데에 사용됩니다.
 
-[본인만의 Dataset 만들기](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/create_your_own_dataset.ipynb)
+[본인만의 데이터 셋(Dataset) 만들기](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/create_your_own_dataset.ipynb)
 
 데이터를 가져오고(importing) 조작하여 Caffe2에서 사용할 수 있도록 만들어보세요. 이 튜토리얼에서는 Iris 데이터셋을 사용합니다.
 
@@ -128,7 +128,7 @@ Caffe2에 대해 소개합니다. 기존의 Caffe모델을 Caffe2모델로 변�
 
 [Caffe2로 다중 GPU 학습](https://github.com/caffe2/caffe2/blob/master/caffe2/python/tutorials/Multi-GPU_Training.ipynb)
 
-이 튜토리얼에서는 다중 GPU 학습을 다룹니다. `data_parallel_model`을 사용하여 ResNet-50 모델과 동일하게 ImageNet 데이터베이스의 하위 집합을 빠르게 처리할 수 있는 기본 구조를 제시합니다. 이미지 파이프라인을 효율적으로 처리하고, ResNet 모델을 구축하고, 단일 GPU 상에서 작동하는 Caffe2의 C++연산자들을 살펴 볼 수 있습니다. 또한 `data_parallel_model`에 포함 된 몇 가지 최적화를 제시하고 확장하여 다중 GPU환경에서 실행할 수 있도록 모델을 병렬화하는 방법을 다룹니다.
+이 튜토리얼에서는 다중 GPU 학습을 다룹니다. `data_parallel_model`을 사용하여 ResNet-50 모델과 동일하게 ImageNet 데이터베이스의 부분 집합을 빠르게 처리할 수 있는 기본 구조를 제시합니다. 이미지 파이프라인을 효율적으로 처리하고, ResNet 모델을 구축하고, 단일 GPU 상에서 작동하는 Caffe2의 C++연산자들을 살펴 볼 수 있습니다. 또한 `data_parallel_model`에 포함 된 몇 가지 최적화를 제시하고 확장하여 다중 GPU환경에서 실행할 수 있도록 모델을 병렬화하는 방법을 다룹니다.
 
 
 ### 자신의 튜토리얼을 공유해주세요!
@@ -174,10 +174,10 @@ Anaconda는 iPython notebook과 함께 설치되므로 matplotlib만 설치하�
 
 너무 복잡하다구요? 여기에 설치를 위한 전체적인 리스트가 있습니다. Python, C++, 혹은 시스템 레벨에서 설치하기를 원할 경우, 경우에 따라 `brew install`, `pip install`, 또는 `conda install`을 이용할 수 있습니다. 
 
-??????????? flask graphviz hypothesis jupyter leveldb lmdb matplotlib pydot pyyaml requests scikit-image scipy tornado zeromq
+flask graphviz hypothesis jupyter leveldb lmdb matplotlib pydot pyyaml requests scikit-image scipy tornado zeromq
 
 
-창의적인 대화형 코드 노트북(ipynb files)을 만들고 사용할 수 있는 Jupyter Notebook의 최신 환경설정을 위한 가이드는 [http://jupyter.org](http://jupyter.org/install.html)에서 찾아볼 수 있습니다.
+대화형 코드 노트북(ipynb files)을 만들고 사용할 수 있는 Jupyter Notebook의 최신 환경설정을 위한 가이드는 [http://jupyter.org](http://jupyter.org/install.html)에서 찾아볼 수 있습니다.
 
 참고: Anaconda Python으로 Caffe2를 이미 성공적으로 설치했다면 멋진 소식입니다! 이미 Jupyter Notebook이 있는 것입니다. 시작은 쉽습니다.
 
