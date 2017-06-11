@@ -7,7 +7,7 @@ comments: false
 ---
 
 
-<center>Our history log!</center>
+<center> Our history log!</center>
 
 **2017-05-02** :: Adding 011A Repository
 
