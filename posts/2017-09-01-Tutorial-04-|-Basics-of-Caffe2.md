@@ -483,6 +483,7 @@ X라고 불리는 blob을 만들고, GaussianFill을 이용해서 랜덤 데이�
    (b) network 이름을 전달해서 `workspace.RunNet()`을 사용합니다.
 
 
+
 ```python
     workspace.ResetWorkspace()
     print("Current blobs in the workspace: {}".format(workspace.Blobs()))
