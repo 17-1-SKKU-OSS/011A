@@ -14,7 +14,6 @@ Caffe2의 데이터는 blob으로 구성되어있습니다. Blob은 메모리에
 
 [Workspace](https://caffe2.ai/docs/workspace.html)는 모든 blob을 저장합니다. 다음 예제는 blob을 `workspace`로 보내고 가져 오는 방법을 보여줍니다. 작업 공간은 시작 시, 자동으로 초기화됩니다.
 
-
 ```python
     from caffe2.python import workspace, model_helper
     import numpy as np
@@ -42,7 +41,6 @@ Caffe2의 기본 객체는 net(network의 약자)입니다. Net은 연산자의 
 
 net을 직접 작성하는 것은 매우 지루하므로, net을 만드는 데 도움을 주는 파이썬 클래스 model helpers를 사용하는 것이 좋습니다. 우리가 그것을 호출하고 "my first net"이라는 하나의 이름으로 전달하더라도 `ModelHelper`는 두 개의 상호 연결된 net을 만듭니다: 파라미터를 초기화 하는 net (ref. init_net), 실제로 작동에 쓰이는 net (ref. exec_net)
 
-
 ```python
     # input data 생성
     data = np.random.rand(16, 100).astype(np.float32)
@@ -60,6 +58,7 @@ net을 직접 작성하는 것은 매우 지루하므로, net을 만드는 데 �
     # model helper를 이용해 모델 만들기
     m = model_helper.ModelHelper(name="my first net")
 ```
+
 
 방금, `model_helper`를 사용하여 앞서 언급 한 두 개의 net(init_net, exec_net)을 만들었습니다. 이 모델에서 FC 연산자를 사용하여 완전히 연결된(fully-connected) 레이어를 추가 할 계획이지만, 먼저 FC 연산자가 필요로 하는 random fills를 만들어 사전 준비 작업을 수행해야합니다. 다음으로 연산자를 추가하고 우리가 만든 weights 및 bias blob을 사용하면, FC 연산자를 호출 할 때 이름으로 호출 할 수 있습니다.
 
@@ -146,7 +145,7 @@ FC연산자의 weight과 bias blob의 random fill을 생성하는 두 연산자�
     workspace.RunNetOnce(m.param_init_net)
 ```
 
-평소와 같이, 이것은 실제 실행을 위해 `param_init_net`의 protobuffer를 C++ runtime에 전달합니다.(평소와 같이, 이것은 실행을 위해 C++ runtime때 param_init_net의 protobuffer를 지나칩니다.) ((Note, as usual, this will actually pass the protobuffer of the param_init_net down to the C++ runtime for execution.))  ???? 어떤게 맞죠 ????
+참고로, 이것을 실행하기 위해서는 평소처럼 `param_init_net`의 protobuffer를 C++런타임에 전달합니다.
 
 
 다음으로, 실제 training Net을 만듭니다:
@@ -181,7 +180,7 @@ FC연산자의 weight과 bias blob의 random fill을 생성하는 두 연산자�
 
 ### 역방향 패스(Backward pass)
 
-이 net은 순방향 패스(forward pass)만을 포함하고 있으므로 아무것도 배울 수 없습니다. 역방향 패스(backward pass)는 순방향 패스의 각 연산자에 대한 그래디언트(gradient) 연산자를 생성해 만들어집니다. 
+이 net은 순방향 패스(forward pass)만을 포함하고 있으므로 아무것도 학습할 수 없습니다. 역방향 패스(backward pass)는 순방향 패스의 각 연산자에 대한 기울기(gradient) 연산자를 생성해 만들어집니다. 
 
 만약 이 예제를 해보길 원한다면, 다음의 예제를 통해 결과를 확인해보세요!
 
@@ -198,3 +197,4 @@ protobuf output을 확인합니다:
 ```
 
 이것으로 overview를 마칩니다. 그러나 [이후 튜토리얼](https://caffe2.ai/docs/tutorials.html)에서 더 많은 것을 배울 수 있을 것입니다.
+
