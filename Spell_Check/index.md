@@ -42,7 +42,7 @@ $ pip install --upgrade 3to2
 
 ### binaryornot
 
-binaryornot은 지정한 파일이 텍스트파일인지 바이너리파일인지 구분하는 함수를 제공하는 라이브러리이다.
+binaryornot은 지정한 파일이 텍스트파일인지 바이너리파일인지 구분하는 함수를 제공하는 라이브러리입니다.
 
 ```python
 from binaryornot.check import is_binary
@@ -71,7 +71,7 @@ while True:
 f.close()
 ```
 
-matches 에는 다음과 같은 형식의 데이터가 들어가있다.
+matches 에는 다음과 같은 형식의 데이터가 들어있습니다.
 
 ```
 Line 1, column 1, Rule ID: UPPERCASE_SENTENCE_START
@@ -81,13 +81,16 @@ transfer the Software. For avoidance of doubt, n...
 ^^^^^^^^
 ```
 
-RuleID는 이 오타가 어떤 종류의 오타인지 나타내는 값인데, 실제 위의 소스코드를 실행하면 텍스트 파일에서 필요이상의 오타를 발견하게 되므로 신경쓰지 않아도 되는 RuleID는 예외처리를 한다.
+RuleID는 이 오타가 어떤 종류의 오타인지 나타내는 값인데, 실제 위의 소스코드를 실행하면 텍스트 파일에서 필요이상의 오타를 발견하게 되므로 신경쓰지 않아도 되는 RuleID는 예외처리를 했습니다.
+
+RuleID의 목록에 대한 정보는 [이곳](https://community.languagetool.org/rule/list?lang=en)에 있습니다.
+[이곳](https://community.languagetool.org/rule/list?lang=en)에서는 RuleID를 추가할 수도 있습니다.
 
 ## Result
 
-이 프로그램을 caffe2 폴더에 적용시켜서 실행한 결과는 [다음](https://github.com/haracejacob/011A/tree/master/spell_checker/fix/caffe2)과 같다.
+이 프로그램을 caffe2 폴더에 적용시켜서 실행한 결과는 [다음](https://github.com/haracejacob/011A/tree/master/spell_checker/fix/caffe2)과 같습니다.
 
-오타에서 제외한 RuleID는 다음과 같다.
+검출된 오타에서 제외한 RuleID는 다음과 같습니다.
 ```
 ['COMMA_PARENTHESIS_WHITESPACE','WHITESPACE_RULE', 'MORFOLOGIK_RULE_EN_US', 'EN_QUOTES' ,'EN_QUOTES[0]', 'EN_QUOTES[1]', 'EN_QUOTES[2]', 'EN_UNPAIRED_BRACKETS']
 ```
