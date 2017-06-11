@@ -22,17 +22,45 @@ layout: compress
                     </a>
                 </div>
                 <div class="post-list">
-                    {% for post in site.Transtation %} 
-                        {% if post.project == null %}
-                    <ul>
-                        <li class="wow fadeInLeft" data-wow-duration="1.5s">
-                            <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ Translation.title }}</a>
-                            <p>{{ Translation.excerpt }}</p>
-                            <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
-                        </li>
-                    </ul>
-                        {% endif %}
-                    {% endfor %}
+
+                    {% if page.Spell_Check %}
+                        {% for post in site.Spell_Check %} 
+                            {% if post.project == null %}
+                        <ul>
+                            <li class="wow fadeInLeft" data-wow-duration="1.5s">
+                                <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                                <p>{{ post.excerpt }}</p>
+                                <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
+                            </li>
+                        </ul>
+                            {% endif %}
+                        {% endfor %}
+                    {% elseif page.Tutorial %}
+                        {% for post in site.Tutorial %} 
+                            {% if post.project == null %}
+                        <ul>
+                            <li class="wow fadeInLeft" data-wow-duration="1.5s">
+                                <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                                <p>{{ post.excerpt }}</p>
+                                <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
+                            </li>
+                        </ul>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% for post in site.Translation %} 
+                            {% if post.project == null %}
+                        <ul>
+                            <li class="wow fadeInLeft" data-wow-duration="1.5s">
+                                <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                                <p>{{ post.excerpt }}</p>
+                                <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
+                            </li>
+                        </ul>
+                            {% endif %}
+                        {% endfor %}                
+                    {% endif %}
+
                 </div>
             </div>
         </div>
