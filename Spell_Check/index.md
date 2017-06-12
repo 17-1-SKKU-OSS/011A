@@ -10,6 +10,8 @@ comments: false
 
 caffe2 커뮤니티에 기여하기 위해서 텍스트파일 내의 오타를 찾아 고치는것을 진행하였습니다. Repository 안에는 6천여 개의 파일이 존재하여 하나하나 읽어보고 고치는 것은 불가능했습니다. 그래서 폴더 내의 텍스트 파일을 찾아 오타를 체크하는 프로그램을 제작하게 되었습니다.
 
+또한 이 프로그램은 모든 프로젝트에 적용이 가능합니다.
+
 ## Installation
 
 이 프로그램을 사용하기 위해서는 2개의 파이썬 라이브러리를 설치해야합니다.
@@ -84,7 +86,7 @@ transfer the Software. For avoidance of doubt, n...
 RuleID는 이 오타가 어떤 종류의 오타인지 나타내는 값인데, 실제 위의 소스코드를 실행하면 텍스트 파일에서 필요이상의 오타를 발견하게 되므로 신경쓰지 않아도 되는 RuleID는 예외처리를 했습니다.
 
 RuleID의 목록에 대한 정보는 [이곳](https://community.languagetool.org/rule/list?lang=en)에 있습니다.
-[이곳](https://community.languagetool.org/rule/list?lang=en)에서는 RuleID를 추가할 수도 있습니다.
+[이곳](https://community.languagetool.org/ruleEditor2/index?lang=en)에서는 RuleID를 추가할 수도 있습니다.
 
 ## Result
 
