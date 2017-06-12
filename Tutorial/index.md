@@ -35,15 +35,13 @@ Caffe2에서 기본적으로 제공하는 Installation Guide에서 요구하는 
 
 이미 존재하는 일부 C++ 예제를 뜯어보았을 때, 프로그램에서 **<blob.h>**라는 헤더 파일을 사용하는 것을 알 수 있었습니다. 따라서 일단 다음과 같은 소스 코드를 정상적으로 작동시키기로 마음먹었습니다.
 
-<pre><code>
-#include <blob.h>
-
-int main()
-{   
-    printf("Hello Caffe2!");
-    return 0;
-}
-</code></pre>
+>#include <blob.h>
+>
+>int main()
+>{   
+>    printf("Hello Caffe2!");
+>    return 0;
+>}
 
 다운로드한 Caffe2 파일을 찾아보자, core라는 하위 폴더 에서 c와 관련된 모든 헤더/소스파일이 나오는 것을 확인할 수 있었습니다. 찾고 있던 **blob.h** 또한 관련된 폴더 안에서 찾을 수 있었습니다. 따라서 VS의 Project Property 부분을 만져, including directory로 Caffe2 (root directory) 와 core를 포함시키자 기존의 에러가 사라지고 새로운 에러가 뜬 것을 확인할 수 있었습니다. **blob.h**를 살펴보니 Caffe2의 폴더에서 헤더 파일 **caffe2.pb.h**을 불러오고 있었는데, 해당 헤더 파일이 존재하지 않는다는 에러였습니다. 구글에 검색해 보니 같은 문제로 많은 사람들이 어려움을 겪고 있는 것을 확인할 수 있었습니다.
 
