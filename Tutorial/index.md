@@ -15,7 +15,7 @@ Caffe2를 저희 팀의 프로젝트로 삼게 되면서, 라이브러리를 직
 
 단순한 Caffe2 기본 설정 및 실행에 며칠의 시간을 쏟아부었는데도 끝내 실행을 시키지 못하자, 저는 이러한 부분이 조금 더 개선이 되었으면 하는 생각이 들었습니다. 많은 사람들이 프로그램을 처음 입문할 때 콘솔창에 Hello World를 쓰듯, Caffe2에도 오직 Hello World만을 표시할 수 있는 Compact한 Tutorial이 필요했습니다.
 
-![Imgur](http://i.imgur.com/tv8ShaE.png)
+![Imgur](http://i.imgur.com/7FT9gItl.png)
 
 특히 Caffe2는 Python과 C++ 모두를 지원하는데도 불구하고, 예제 자체가 Python에 치중되어 있는 경향이 있었습니다. 따라서 저는 이 부족한 C++ 부분에 집중을 해서, 제가 필요했던 'C++를 이용한 가장 단순한 형태의 Caffe2 튜토리얼' 을 만들기로 하였습니다.
 
@@ -45,7 +45,7 @@ int main()
 }
 </code></pre>
 
-다운로드한 Caffe2 파일을 찾아보자, core라는 하위 폴더 에서 c와 관련된 모든 헤더/소스파일이 나오는 것을 확인할 수 있었습니다. 찾고 있던 **<blob.h>** 또한 관련된 폴더 안에서 찾을 수 있었습니다. 따라서 VS의 Project Property 부분을 만져, including directory로 Caffe2 (root directory) 와 core를 포함시키자 기존의 에러가 사라지고 새로운 에러가 뜬 것을 확인할 수 있었습니다. **<blob.h>**를 살펴보니 Caffe2의 폴더에서 헤더 파일 **"caffe2.pb.h"**을 불러오고 있었는데, 해당 헤더 파일이 존재하지 않는다는 에러였습니다. 구글에 검색해 보니 같은 문제로 많은 사람들이 어려움을 겪고 있는 것을 확인할 수 있었습니다.
+다운로드한 Caffe2 파일을 찾아보자, core라는 하위 폴더 에서 c와 관련된 모든 헤더/소스파일이 나오는 것을 확인할 수 있었습니다. 찾고 있던 **blob.h** 또한 관련된 폴더 안에서 찾을 수 있었습니다. 따라서 VS의 Project Property 부분을 만져, including directory로 Caffe2 (root directory) 와 core를 포함시키자 기존의 에러가 사라지고 새로운 에러가 뜬 것을 확인할 수 있었습니다. **blob.h**를 살펴보니 Caffe2의 폴더에서 헤더 파일 **caffe2.pb.h**을 불러오고 있었는데, 해당 헤더 파일이 존재하지 않는다는 에러였습니다. 구글에 검색해 보니 같은 문제로 많은 사람들이 어려움을 겪고 있는 것을 확인할 수 있었습니다.
 
 
 # 2. Protocol Buffers 세팅
