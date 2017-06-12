@@ -11,11 +11,11 @@ comments: false
 
 Caffe2를 저희 팀의 프로젝트로 삼게 되면서, 라이브러리를 직접 사용해 보기 위해 기본적으로 제공하는 Tutorial을 보고 설치 및 실행을 시도해보았습니다.하지만 간단한 Tutorial조차 너무나 많은 파일의 설치를 요구하고 있었고, 추가적으로 설정해 주어야 하는 사항 또한 넘쳐났습니다.
 
-![Figure1](http://i.imgur.com/zQOurky.png)
+![Imgur](http://i.imgur.com/Cf7sPxZ.png)
 
 단순한 Caffe2 기본 설정 및 실행에 며칠의 시간을 쏟아부었는데도 끝내 실행을 시키지 못하자, 저는 이러한 부분이 조금 더 개선이 되었으면 하는 생각이 들었습니다. 많은 사람들이 프로그램을 처음 입문할 때 콘솔창에 Hello World를 쓰듯, Caffe2에도 오직 Hello World만을 표시할 수 있는 Compact한 Tutorial이 필요했습니다.
 
-![Figure2](http://i.imgur.com/7FT9gIt.png)
+![Imgur](http://i.imgur.com/tv8ShaE.png)
 
 특히 Caffe2는 Python과 C++ 모두를 지원하는데도 불구하고, 예제 자체가 Python에 치중되어 있는 경향이 있었습니다. 따라서 저는 이 부족한 C++ 부분에 집중을 해서, 제가 필요했던 'C++를 이용한 가장 단순한 형태의 Caffe2 튜토리얼' 을 만들기로 하였습니다.
 
