@@ -21,6 +21,8 @@ comments: false
 
 **2017-05-30** :: Making Misspelling list `.fix` file 
 
+**2017-05-30** :: Making [first version of the document about Caffe2 Tutorial using C++](https://github.com/17-1-SKKU-OSS/011A/blob/master/cplusplus_tutorial.md)
+
 **2017-06-01** :: Making the Issue [Translate Docs (#702)](https://github.com/caffe2/caffe2/issues/702) 
 
 **2017-06-01** :: Registering Pull-Request [Fix a few typos and grammars in comment (#719)](https://github.com/caffe2/caffe2/pull/719)
@@ -32,3 +34,5 @@ comments: false
 **2017-06-09** :: Change the order of the Static homepage Exposure, Make some error correction
 
 **2017-06-11** :: Overall meeting
+
+**2017-06-11** :: Registering Pull request [A simple tutorial for C++ users (#780)](https://github.com/caffe2/caffe2/pull/780)
