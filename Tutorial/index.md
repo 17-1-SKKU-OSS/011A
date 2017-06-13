@@ -33,22 +33,30 @@ Caffe2에서 기본적으로 제공하는 Installation Guide에서 요구하는 
 
 그러나 위의 것을 다 설치하고 나서도 기존의 C++ 예제가 무겁고 잘 실행되지도 않아 프로젝트를 진행하는 데 어려움을 겪었습니다. 제가 원하는 것은 오직 C++만을 위한 가장 간단한 실행 예제였기 때문에, 무작정 VS와 Caffe2만 다운받은 뒤에 실행해보기로 하였습니다.
 
-이미 존재하는 일부 C++ 예제를 뜯어보았을 때, 프로그램에서 **<blob.h>**라는 헤더 파일을 사용하는 것을 알 수 있었습니다. 따라서 일단 다음과 같은 소스 코드를 정상적으로 작동시키기로 마음먹었습니다.
+이미 존재하는 일부 C++ 예제를 뜯어보았을 때, 프로그램에서 **blob.h**라는 헤더 파일을 사용하는 것을 알 수 있었습니다. 따라서 일단 다음과 같은 소스 코드를 정상적으로 작동시키기로 마음먹었습니다.
 
->#include <blob.h>
->
->int main()
->{   
->    printf("Hello Caffe2!");
->    return 0;
->}
+```C++
+#include <blob.h>
+
+int main()
+{   
+    printf("Hello Caffe2!");
+    return 0;
+}
+```
 
 다운로드한 Caffe2 파일을 찾아보자, core라는 하위 폴더 에서 c와 관련된 모든 헤더/소스파일이 나오는 것을 확인할 수 있었습니다. 찾고 있던 **blob.h** 또한 관련된 폴더 안에서 찾을 수 있었습니다. 따라서 VS의 Project Property 부분을 만져, including directory로 Caffe2 (root directory) 와 core를 포함시키자 기존의 에러가 사라지고 새로운 에러가 뜬 것을 확인할 수 있었습니다. **blob.h**를 살펴보니 Caffe2의 폴더에서 헤더 파일 **caffe2.pb.h**을 불러오고 있었는데, 해당 헤더 파일이 존재하지 않는다는 에러였습니다. 구글에 검색해 보니 같은 문제로 많은 사람들이 어려움을 겪고 있는 것을 확인할 수 있었습니다.
+
+![Imgur](http://i.imgur.com/4ZZId4pl.png)
 
 
 # 2. Protocol Buffers 세팅
 
-이 부분을 추가로 알아보니, 위에서 Caffe2의 Dependency 중 하나로 표시되었던 protobuf가 Google이 만든 오픈소스 프로그램인 Protocol Buffer라는 것을 알게 되었습니다. 주어진 하나의 Data Format을 사용자 입맛에 맞게 JSON, C++ Class 등 다양한 형태로 변환할 수 있게 해주는 Language-neutral한 프로그램입니다. 다시 말해서, 우리가 이를 C++에 걸맞게 사용하기 위해서는 protobuf를 이용해 변환을 해 주어야 한다는 뜻입니다. 따라서 protobuf를 설치한 뒤, 위에서 필요했던 **caffe2.pb.h** 파일을 생성하기 위해 원본 데이터인 **caffe2.proto**를 변환, 필요로 했던 **caffe2.pb.h**와 **caffe2.pb.cc** 파일을 생성해냈습니다. 그러자 마침내 에러 갯수가 **단 하나**로 줄어들었습니다.
+이 부분을 추가로 알아보니, 위에서 Caffe2의 Dependency 중 하나로 표시되었던 protobuf가 Google이 만든 오픈소스 프로그램인 [Protocol Buffer](https://developers.google.com/protocol-buffers/)라는 것을 알게 되었습니다. 주어진 하나의 Data Format을 사용자 입맛에 맞게 JSON, C++ Class 등 다양한 형태로 변환할 수 있게 해주는 Language-neutral한 프로그램입니다. 다시 말해서, 우리가 이를 C++에 걸맞게 사용하기 위해서는 protobuf를 이용해 변환을 해 주어야 한다는 뜻입니다.
+
+![Imgur](http://i.imgur.com/VjgWOpYl.png)
+
+따라서 protobuf를 설치한 뒤, 위에서 필요했던 **caffe2.pb.h** 파일을 생성하기 위해 원본 데이터인 **caffe2.proto**를 변환, 필요로 했던 **caffe2.pb.h**와 **caffe2.pb.cc** 파일을 생성해냈습니다. 그러자 마침내 에러 갯수가 **단 하나**로 줄어들었습니다.
 
 이렇게 뜬 에러는 소스코드 자체에서도 protobuf를 사용하고 있기 때문에 발생하는 에러였습니다. including directory로 protobuf의 src 폴더를 포함시켜주자 에러가 사라지고, 콘솔 화면에서 Hello Caffe2가 뜬 것을 확인할 수 있었습니다.
 
@@ -69,4 +77,6 @@ Caffe2에서 기본적으로 제공하는 Installation Guide에서 요구하는 
 
 계속 이것저것 시도해 본 결과 Caffe2 프로젝트를 fork해 올 때 모든 branch를 가져온다는 것을 뒤늦게 알게 되었고, 저희 팀의 local project에서도 gh-pages branch가 존재한다는 것을 알 게 되었습니다. 이 곳에 만들었던 tutorial 파일을 다시 업로드하고, Caffe2에서 document에 요구하는 사항을 참고하여 약간의 수정을 더했습니다.
 
-이후 Caffe2의 gh-pages branch에 직접 pull-request를 날려보았습니다. 공식적인 답변은 없는 상황이지만, 이렇게 처음부터 끝까지 OSS에 직접 기여하려는 노력을 시도해보니 참 의미가 있었습니다. 
+이후 Caffe2의 gh-pages branch에 직접 pull-request를 날려보았습니다. 공식적인 답변은 없는 상황이지만, 이렇게 처음부터 끝까지 OSS에 직접 기여하려는 노력을 시도해보니 참 의미가 있었습니다.
+
+![Imgur](http://i.imgur.com/agWgRTNl.png)
